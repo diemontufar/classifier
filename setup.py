@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'tweet_classifier',
   packages = ['tweet_classifier'],
-  version = '0.1',
+  version = '1.1',
   description = 'A sentiment classifier for tweets',
   author = 'Diego Montufar',
   author_email = 'diogonal0@gmail.com',

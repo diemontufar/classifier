@@ -3,7 +3,7 @@ Twitter Sentiment classifier
 
 - - - - 
 
-PyPI release: 
+PyPI release: https://pypi.python.org/pypi/tweet_classifier
 
 Author: diogonal
 
@@ -17,9 +17,11 @@ Tweets are analysed considering the following aspects:
 
 ## Dependencies
 
->`pip install -U textblob`
+$`pip install twitter-text-python`
 
->`python -m textblob.download_corpora`
+$`pip install -U textblob`
+
+$`python -m textblob.download_corpora`
 
 Further Information about TextBlob [Here](http://textblob.readthedocs.org/en/latest/install.html)
 

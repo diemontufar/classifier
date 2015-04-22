@@ -3,7 +3,7 @@ Twitter Sentiment classifier
 
 - - - - 
 
-PyPI release: 
+PyPI release: https://pypi.python.org/pypi/tweet_classifier
 
 Author: diogonal
 

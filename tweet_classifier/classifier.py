@@ -6,29 +6,44 @@
 # Description: Performs Sentiment analysis for a given text.
 #			   It uses text tokenization and normalization and the TexBlob
 #              library. Emojis defined in sentiments.json will be considered as well
-#			   in order to improve accuracy. This library is meant to be used as
-#			   helper only, you shulun't be executing this directly.
+#			   in order to improve accuracy. 
+#
+# Import as:   import tweet_classifier as classifier
+# Execute it:  print(classifier.doSentimentAnalysis("I'm happy to be here!"))
 #
 ################################################################################
-
-import classifier_settings as settings #Custom Settings
 import re #Parsisng
 from ttp import ttp #For extracting usernames and hashtags
 from textblob import TextBlob #Parsing and Sentiment analysis
 import json #Working with sentiments
-import html
 import time
 import os
 # __file__ refers to the root directory 
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))  
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 #Open the sentiment.json file where emojis and other characters are defined
 with open(APP_ROOT + '/sentiments.json') as sentiments_json:    
     sentiments = json.load(sentiments_json)
 
+#Regex for detecting emails
+email = "([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*(@|\sat\s)(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(\.|\sdot\s))+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
+#Html wntities which must be removed
+html_entities = {
+			'&nbsp;':' ',
+			'&lt;':'<',
+			'&gt;':'>',
+			'&amp;':'&',
+			'&cent;':'¢',
+			'&pound;':'£',
+			'&yen;':'¥',
+			'&euro;':'€',
+			'&copy;':'©',
+			'&reg;':'®'
+}
+
 #Regex to detect emails
-email_regex = re.compile(settings.email)
+email_regex = re.compile(email)
 
 # Remove usernames, hashtags and urls
 def extractUsernamesHashtagsURLS(ttp_obj,text):
@@ -45,14 +60,12 @@ def extractUsernamesHashtagsURLS(ttp_obj,text):
 # Twitter text comes HTML-escaped, so unescape it.
 # We also first unescape &amp;'s, in case the text has been buggily double-escaped.
 def normalizeTextForTagger(text):
-    text = text.replace("&amp;", "&")
-    # text = html.parser.HTMLParser().unescape(text)
-    text = html.unescape(text)
-    return text
+	for key, value in list(html_entities.items()):
+		text = text.replace(key, value)
+	return text
 
 #Remove emails
 def removeEmails(text):
-	email_regex = re.compile(settings.email)
 	text = email_regex.sub('', text) #remove URL
 	return text
 
@@ -73,7 +86,7 @@ def parseText(text):
 	p = ttp.Parser()
 	ttp_result = p.parse(text)
 	text = extractUsernamesHashtagsURLS(ttp_result,text)
-	# text = normalizeTextForTagger(text)
+	text = normalizeTextForTagger(text)
 	text = removeEmails(text)
 	text = removeLineBreaks(text)
 
@@ -121,6 +134,4 @@ def doSentimentAnalysis(text):
 		'sentiment': sentiment, 
 		'subjectivity': tweet.subjectivity* 100.0,
 		'polarity': tweet.polarity }
-
-
 

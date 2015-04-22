@@ -32,8 +32,8 @@ Further Information about TextBlob [Here](http://textblob.readthedocs.org/en/lat
 ## Usage
 
 ```python
-  import tweet_classifier as classifier
-  sentiment = doSentimentAnalysis("I'm happy to be here! test@gmail.com All good :)")
+  import tweet_classifier.classifier as classifier
+  sentiment = classifier.doSentimentAnalysis("I'm happy to be here! test@gmail.com All good :)")
   print(sentiment["text"])
   print(sentiment["sentiment"])
   print(sentiment["polarity"])

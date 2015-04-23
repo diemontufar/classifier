@@ -1,3 +1,7 @@
+## PyPi
+MANIFEST
+tweet_classifier.egg-info
+
 ## Java
 
 *.class

@@ -33,13 +33,7 @@ html_entities = {
 			'&nbsp;':' ',
 			'&lt;':'<',
 			'&gt;':'>',
-			'&amp;':'&',
-			'&cent;':'¢',
-			'&pound;':'£',
-			'&yen;':'¥',
-			'&euro;':'€',
-			'&copy;':'©',
-			'&reg;':'®'
+			'&amp;':'&'
 }
 
 #Regex to detect emails

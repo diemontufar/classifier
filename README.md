@@ -3,9 +3,9 @@ Twitter Sentiment classifier
 
 - - - - 
 
-PyPI release: https://pypi.python.org/pypi/tweet_classifier
-
-Author: diogonal
+**Author:** Diego Montufar<br>
+**PyPI release:** https://pypi.python.org/pypi/tweet_classifier<br>
+**Stable Version:** 1.1.3<br>
 
 With this tool you can analyse sentiment on tweets and classify them in positive, neutral or negative according to the computed polarity and subjectivity. Although it is oriented to tweets, you can use it for any text.
 
@@ -17,17 +17,19 @@ Tweets are analysed considering the following aspects:
 
 ## Dependencies
 
-$`pip install twitter-text-python`
+```
+$ sudo pip install twitter-text-python
 
-$`pip install -U textblob`
-
-$`python -m textblob.download_corpora`
+$ sudo pip install -U TextBlob
+```
 
 Further Information about TextBlob [Here](http://textblob.readthedocs.org/en/latest/install.html)
 
 ## Installation
 
->`pip install tweet_classifier`
+```
+sudo pip install tweet_classifier`
+```
 
 ## Usage
 
